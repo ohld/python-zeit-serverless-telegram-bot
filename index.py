@@ -5,9 +5,9 @@ import telegram
 from flask import Flask, jsonify, Response, request
 app = Flask(__name__)
 
-@app.route('/', defaults={'path': ''})
-def catch_all(path):
-    return Response("<h1>Flask is working</h1>")
+# @app.route('/', defaults={'path': ''})
+# def catch_all(path):
+#     return Response("<h1>Flask is working</h1>")
 
 @app.route('/api')
 def api():
@@ -16,7 +16,7 @@ def api():
         return jsonify({"status": "error", "reason": "no tg token"})
         
     bot = telegram.Bot(token=TELEGRAM_TOKEN)
-    logging.info(f"Request: {request}")
+    logging.warning(f"Request: {request}")
 
     if request.method == "POST":
         update = telegram.Update.de_json(request.get_json(force=True), bot)
