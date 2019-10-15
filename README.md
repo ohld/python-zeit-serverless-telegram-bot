@@ -11,7 +11,7 @@ https://seminar.io/2018/09/03/building-serverless-telegram-bot/
 ## Add env variable to now sh
 
 ``` bash
-now secrets add TELEGRAM_TOKEN <TELEGRAM_TOKEN>
+now secrets add telegram-token <TELEGRAM_TOKEN>
 ```
 
 ## Register webhook
