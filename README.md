@@ -8,9 +8,15 @@ https://dev.to/jolvera/deploy-a-python-serverless-function-on-zeit-now-22cf
 ## Telegram Serverless
 https://seminar.io/2018/09/03/building-serverless-telegram-bot/
 
-## Register webhook
+## Add env variable to now sh
+
+You will need the now cli, mind that the env will be lowercase :shrug:.
+
 ``` bash
-curl "https://api.telegram.org/bot<TELEGRAM_TOKEN>/setWebhook?url=https://us-central1-<PROJECT-NAME>.cloudfunctions.net/webhook"
+now secrets add TELEGRAM_TOKEN <TELEGRAM_TOKEN>
 ```
 
-curl "https://api.telegram.org/bot835520379:AAHNEMSwOgTHI5d8PdTJUY1ujW4D-DN89w8/setWebhook?url=https://python-zeit-serverless-telegram-bot.okhlopkov.now.sh/api"
+## Register webhook
+``` bash
+curl "https://api.telegram.org/bot<TELEGRAM_TOKEN>/setWebhook?url=https://your-now-sh-project.now.sh/api"
+```
