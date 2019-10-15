@@ -15,9 +15,7 @@ def api():
         return jsonify({"status": "error", "reason": "no tg token"})
         
     bot = telegram.Bot(token=TELEGRAM_TOKEN)
-    print("REQUEST:", str(request))
-    print("REQUEST METHOD:", str(request.method))
-    print("REQUEST JSON:", str(request.get_json(force=True)))
+    print("REQUEST:", request)
 
     if request.method == "POST":
         update = telegram.Update.de_json(request.get_json(force=True), bot)
