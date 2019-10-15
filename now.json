@@ -4,5 +4,8 @@
   }],
   "routes": [
 		{ "src": "/(.*)", "dest": "index.py" }
-	]
+  ],
+  "env": {
+    "TELEGRAM_TOKEN": "@telegram-token"
+  }
 }
