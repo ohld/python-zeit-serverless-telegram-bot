@@ -7,7 +7,7 @@ app = Bottle()
 
 @app.get('/api')
 def api():
-    bot = telegram.Bot(token=os.environ["TELEGRAM_TOKEN"])
+    bot = telegram.Bot(token=os.environ["telegram_token"])
     if request.method == "POST":
         update = telegram.Update.de_json(request.get_json(force=True), bot)
         chat_id = update.message.chat.id
