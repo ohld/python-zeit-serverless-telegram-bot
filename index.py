@@ -1,7 +1,7 @@
 import os
 import telegram
 
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, Response, request
 app = Flask(__name__)
 
 @app.route('/', defaults={'path': ''})
@@ -15,6 +15,10 @@ def api():
         return jsonify({"status": "error", "reason": "no tg token"})
         
     bot = telegram.Bot(token=TELEGRAM_TOKEN)
+    print("REQUEST:", str(request))
+    print("REQUEST METHOD:", str(request.method))
+    print("REQUEST JSON:", str(request.get_json(force=True)))
+
     if request.method == "POST":
         update = telegram.Update.de_json(request.get_json(force=True), bot)
         chat_id = update.message.chat.id
