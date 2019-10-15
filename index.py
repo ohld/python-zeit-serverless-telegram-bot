@@ -6,13 +6,13 @@ app = Flask(__name__)
 
 @app.route('/', defaults={'path': ''})
 def catch_all(path):
-    return Response("<h1>Flask on Now</h1><p>You visited: /%s</p>" % (path), mimetype="text/html")
+    return Response("<h1>Flask is working</h1>")
 
 @app.route('/api')
 def api():
-    TELEGRAM_TOKEN = os.getenv("telegram_token")
+    TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
     if not TELEGRAM_TOKEN:
-        return Response({"status": "error", "reason": "no tg token"})
+        return Response.json({"status": "error", "reason": "no tg token"})
         
     bot = telegram.Bot(token=TELEGRAM_TOKEN)
     if request.method == "POST":
@@ -20,4 +20,4 @@ def api():
         chat_id = update.message.chat.id
         # Reply with the same message
         bot.sendMessage(chat_id=chat_id, text=update.message.text)
-    return Response({"status": "ok"})
+    return Response.json({"status": "ok"})

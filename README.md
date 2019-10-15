@@ -10,8 +10,6 @@ https://seminar.io/2018/09/03/building-serverless-telegram-bot/
 
 ## Add env variable to now sh
 
-You will need the now cli, mind that the env will be lowercase :shrug:.
-
 ``` bash
 now secrets add TELEGRAM_TOKEN <TELEGRAM_TOKEN>
 ```

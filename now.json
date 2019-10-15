@@ -1,5 +1,11 @@
 {
-  "builds": [{ "src": "index.py", "use": "@now/python" }],
+  "builds": [{ 
+    "src": "index.py", 
+    "use": "@now/python",
+    "env": {
+        "TELEGRAM_TOKEN": "@secret--telegram_token"
+    } 
+  }],
   "routes": [
 		{ "src": "/(.*)", "dest": "/index.py" }
 	]
