@@ -1,7 +1,7 @@
 import os
 import telegram
 
-from flask import Flask, Response, request
+from flask import Flask, jsonify, request
 app = Flask(__name__)
 
 @app.route('/', defaults={'path': ''})
@@ -12,7 +12,7 @@ def catch_all(path):
 def api():
     TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
     if not TELEGRAM_TOKEN:
-        return Response.json({"status": "error", "reason": "no tg token"})
+        return jsonify({"status": "error", "reason": "no tg token"})
         
     bot = telegram.Bot(token=TELEGRAM_TOKEN)
     if request.method == "POST":
@@ -20,4 +20,4 @@ def api():
         chat_id = update.message.chat.id
         # Reply with the same message
         bot.sendMessage(chat_id=chat_id, text=update.message.text)
-    return Response.json({"status": "ok"})
+    return jsonify({"status": "ok"})
