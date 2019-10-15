@@ -1,4 +1,5 @@
 import os
+import logging
 import telegram
 
 from flask import Flask, jsonify, Response, request
@@ -15,7 +16,7 @@ def api():
         return jsonify({"status": "error", "reason": "no tg token"})
         
     bot = telegram.Bot(token=TELEGRAM_TOKEN)
-    print("REQUEST:", request)
+    logging.info(f"Request: {request}")
 
     if request.method == "POST":
         update = telegram.Update.de_json(request.get_json(force=True), bot)
