@@ -35,7 +35,7 @@ def generate_cats():
 def getme():
     TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
     bot = telegram.Bot(TELEGRAM_TOKEN)
-    return jsonify(dict(bot.get_me()))
+    return str(bot.get_me())
     
 
 @app.route('/api', methods=['GET', 'POST'])
@@ -53,6 +53,6 @@ def api():
         text = generate_cats() # update.message.text
         bot.sendMessage(chat_id=chat_id, text=text)
     else:
-        return jsonify(bot.get_me())
+        return str(bot.get_me())
         
     return jsonify({"status": "ok"})
