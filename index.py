@@ -48,8 +48,8 @@ def api():
     if request.method == "POST":
         update = telegram.Update.de_json(request.get_json(force=True), bot)
         chat_id = update.message.chat.id
-        # Reply with the same message
-        text = update.message.text  # generate_cats() 
+
+        text = generate_cats()  # update.message.text 
         bot.sendMessage(chat_id=chat_id, text=text)
     else:
         return str(bot.get_me())
