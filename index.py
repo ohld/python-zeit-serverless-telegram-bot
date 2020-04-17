@@ -30,6 +30,13 @@ def generate_cats():
         
     return t
         
+    
+@app.route('/', methods=['GET'])
+def getme():
+    TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
+    bot = telegram.Bot(token=TELEGRAM_TOKEN)
+    return jsonify(bot.get_me())
+    
 
 @app.route('/api', methods=['GET', 'POST'])
 def api():
