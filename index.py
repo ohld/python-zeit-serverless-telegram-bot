@@ -1,4 +1,5 @@
 import os
+import random
 import logging
 import telegram
 
@@ -6,9 +7,7 @@ from flask import Flask, jsonify, Response, request
 app = Flask(__name__)
 
 
-def generate_cats():
-    import random
-    
+def generate_cats():    
     cs_all = [
         "👊 Опасность",
         "💪 Брутальность",
@@ -50,7 +49,7 @@ def api():
         update = telegram.Update.de_json(request.get_json(force=True), bot)
         chat_id = update.message.chat.id
         # Reply with the same message
-        text = generate_cats() # update.message.text
+        text = update.message.text  # generate_cats() 
         bot.sendMessage(chat_id=chat_id, text=text)
     else:
         return str(bot.get_me())
