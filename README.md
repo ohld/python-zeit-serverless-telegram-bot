@@ -14,6 +14,8 @@ now secrets add telegram-token <TELEGRAM_TOKEN>
 curl "https://api.telegram.org/bot<TELEGRAM_TOKEN>/setWebhook?url=https://your-now-sh-project.now.sh/api"
 ```
 
+N.B. DON'T PUT BACKSLASH ATTHE END!
+
 
 # Literature
 * https://dev.to/jolvera/deploy-a-python-serverless-function-on-zeit-now-22cf
