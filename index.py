@@ -54,5 +54,7 @@ def api():
         # Reply with the same message
         text = generate_cats() # update.message.text
         bot.sendMessage(chat_id=chat_id, text=text)
+    else:
+        return jsonify(bot.get_me())
         
     return jsonify({"status": "ok"})
