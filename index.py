@@ -22,9 +22,9 @@ def generate_cats():
     cs = random.sample(cs_all, 3)
     
     t = f"""
-{cs[0]}: {random.randint(4,6)}/5
-{cs[1]}: {random.randint(3,6)}/5
-{cs[2]}: {random.randint(1,6)}/5
+{cs[0]}: {random.randint(4,5)}/5
+{cs[1]}: {random.randint(3,5)}/5
+{cs[2]}: {random.randint(1,5)}/5
     """
         
     return t
